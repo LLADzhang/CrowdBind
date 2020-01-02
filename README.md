@@ -12,7 +12,7 @@ The mobility trace was used to evaluate our EWSN 2020 paper "CrowdBind: Fairness
 ```
 ## Command to use
 * "gunzip trace.npy.gz" to get a file called "trace.npy"
-* In python3, use "numpy.load('trace.npy')" to load the mobility trace. 
+* In python 2 or 3, use "numpy.load('trace.npy')" to load the mobility trace. 
 
 ## How the data looks like
 This mobility trace is stored as numpy 2-d array. 
