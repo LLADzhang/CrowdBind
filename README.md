@@ -1,20 +1,21 @@
-# Description
-This repo hosts the one-month mobility trace of 62 users at Purdue University. This mobility trace was collected by installing our Android application on users' smartphones and the app periodically sampled users' location. 
+# mcs-mobility-trace
+We conducted a real-world mobile crowdsensing campaign on our university campus (Purdue) over one month (Feb 7 - Mar 7, 2018) with 50 users to evaluate CROWDBIND (our EWSN 20 paper) plus 4 competing solutions. The students went about their daily routine with their smartphones running the five different software packages, collecting sensor data (e.g. pressure). This is the anonymized mobility trace of these 50 students over a 100 sq. km. area. 
 
-## Cite the paper
-The mobility trace was used to evaluate our EWSN 2020 paper "CrowdBind: Fairness Enhanced Late Binding Task Scheduling in Mobile Crowdsensing". If you find our mobility trace useful in your scientific publication, please consider citing 
-```
-@inproceedings{Zhang2019CrowdBindFE,
-  title={CrowdBind: Fairness Enhanced Late Binding Task Scheduling in Mobile Crowdsensing},
-  author={Heng Zhang and Michael A Roth and Rajesh K. Panta and He Wang and Saurabh Bagchi},
-  year={2019}
-}
-```
+If you use this trace, please cite our paper:
+
+Heng Zhang, Michael A. Roth (Google), Rajesh K. Panta (AT&T Labs Research), He Wang, and Saurabh Bagchi, “CrowdBind: Fairness Enhanced Late Binding Task Scheduling in Mobile Crowdsensing,” At the 17th International Conference on Embedded Wireless Systems and Networks (EWSN), pp. 1-12, Feb 17-19, 2020, Lyon, France. (Best paper award winner)
+
+
 ## Command to use
-* "gunzip trace.npy.gz" to get a file called "trace.npy"
-* In python 2 or 3, use "numpy.load('trace.npy')" to load the mobility trace. 
+1. The mobility trace of the users are stored in the file called "trace.npy"
+2. In Python 2 or 3:
+    * First import numpy by "import numpy";
+    * Then load the traces by "traces = numpy.load('trace.npy')";
+    * Now you can play with the "traces" Python object. Just type "traces" in the Python environment and you will see some example entries.
 
 ## How the data looks like
 This mobility trace is stored as numpy 2-d array. 
 * The elements of each row: [('id', 'int'), ('latitude', 'float'), ('longitude', 'float'), ('timestamp', 'int')])
-* The first element of each row is the id of a user. For user privacy concern, we use 0 to 61 to denote those 62 users. Note that some users may have some missing datapoints. This may due to different factors such as user turned off phone at night, user has limited network access, or user quitted the data collection campaign for personal reasons. We did not restrict user's normal activities during the data collection.
+* The first element of each row is the id of a user. For user privacy concern, we use numbers for the 'id' to denote those users. The entreis with the same "id" come from one user.
+* The timestamp is in Unix epoch time and you can use Python [datetime module](https://docs.python.org/2/library/datetime.html). Be careful to refer to the module corresponding to the correct Python version.
+* Note that some users may have some missing datapoints. This may due to different factors such as user turned off phone at night, user has limited network access, or user quitted the data collection campaign for personal reasons. We did not restrict user's normal activities during the data collection.
